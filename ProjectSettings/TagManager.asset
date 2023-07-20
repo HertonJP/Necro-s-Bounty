@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Ground
+  - Hero
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 2729635815
+    locked: 0
+  - name: Hero
+    uniqueID: 209051233
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
