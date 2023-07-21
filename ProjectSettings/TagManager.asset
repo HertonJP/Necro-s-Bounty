@@ -48,3 +48,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Bush
+    uniqueID: 3529021691
+    locked: 0
+  - name: Tree
+    uniqueID: 1483224271
+    locked: 0
+  - name: Gravestone
+    uniqueID: 796607847
+    locked: 0
