@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerAttributes PA;
-    private float movementSpeed = PA.moveSpeed;
+    [SerializeField] public float movementSpeed = 5f;
     public Rigidbody2D rb;
     public Camera cam;
+    private bool facingRight = true;
 
     Vector2 movement;
     Vector2 mousePos;
@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        if ((movement.x < 0 && facingRight) || (movement.x > 0 && !facingRight))
+        {
+            Flip();
+        }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -27,6 +31,25 @@ public class PlayerMovement : MonoBehaviour
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
-        rb.rotation = angle;
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if (collision.CompareTag("Border"))
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
+
+    void Flip()
+    {
+        
+        facingRight = !facingRight;
+
+        
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        transform.localScale = newScale;
     }
 }
