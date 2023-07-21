@@ -20,6 +20,24 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+        if (transform.position.y >= 39)
+        {
+            transform.position = new Vector3(transform.position.x, 39, 0);
+        }
+
+        if (transform.position.y <= -39)
+        {
+            transform.position = new Vector3(transform.position.x, -39, 0);
+        }
+        if(transform.position.x >= 52)
+        {
+            transform.position = new Vector3(52, transform.position.y, 0);
+        }
+        if (transform.position.x <= -52)
+        {
+            transform.position = new Vector3(-52, transform.position.y, 0);
+        }
+
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
