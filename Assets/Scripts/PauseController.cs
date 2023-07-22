@@ -49,4 +49,10 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
+
+    public void RetryButton(string sceneName)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(sceneName);
+    }
 }

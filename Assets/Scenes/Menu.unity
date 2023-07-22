@@ -1890,6 +1890,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &633632965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,6 +2319,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &674674360
 MonoBehaviour:
   m_ObjectHideFlags: 0
