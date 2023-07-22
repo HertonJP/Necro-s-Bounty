@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,10 +9,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] public int initialEnemyHP = 20;
     public int enemyHP;
     private bool isDestroyed = false;
+    private bool isDead = false;
 
     [SerializeField] private float targetingRange = 3f;
     [SerializeField] public float initialAttackSpeed = 1f;
     public float attackSpeed;
+
+    [SerializeField] private Sprite corpseSprite;
+    private SpriteRenderer spriteRenderer;
 
     private Transform target;
     private float timeUntilFire;
@@ -23,10 +25,14 @@ public class Enemy : MonoBehaviour
     {
         enemyHP = initialEnemyHP;
         attackSpeed = initialAttackSpeed;
-      
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
     private void Update()
     {
+        if (isDead)
+            return;
+
         if (target == null)
         {
             FindTarget();
@@ -52,10 +58,8 @@ public class Enemy : MonoBehaviour
     {
         GameObject projectilesObj = Instantiate(projectilesPrefab, firingPoint.position, Quaternion.identity);
 
-        // Calculate the direction towards the player
         Vector2 directionToPlayer = target.transform.position - firingPoint.position;
 
-        // Set the target and initial direction for the EnemyProjectiles
         EnemyProjectiles projectilesScript = projectilesObj.GetComponent<EnemyProjectiles>();
         projectilesScript.SetInitialDirection(directionToPlayer);
     }
@@ -73,21 +77,54 @@ public class Enemy : MonoBehaviour
             target = hits[0].transform;
         }
     }
-    
+
     public void TakeDamage(int damage)
     {
+        if (isDead)
+            return;
+
         enemyHP -= damage;
         if (enemyHP <= 0 && !isDestroyed)
         {
-            Spawner.onEnemyDestroy.Invoke();
             isDestroyed = true;
-            Destroy(gameObject);
+            StopAttackingAndFollowing();
+            StartCoroutine(DestroyAfterDelay());
         }
+    }
+
+    private void StopAttackingAndFollowing()
+    {
+        isDead = true;
+        target = null;
+
+        AI aiComponent = GetComponent<AI>();
+        if (aiComponent != null)
+        {
+            aiComponent.enabled = false;
+        }
+
+        spriteRenderer.sprite = corpseSprite;
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+        gameObject.layer = LayerMask.NameToLayer("Corpse");
+    }
+
+    private IEnumerator DestroyAfterDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.tag = "Corpse";
+        yield return new WaitForSeconds(20f);
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, targetingRange);
     }
 }

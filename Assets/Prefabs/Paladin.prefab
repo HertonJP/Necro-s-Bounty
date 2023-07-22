@@ -158,9 +158,12 @@ MonoBehaviour:
     m_Bits: 128
   projectilesPrefab: {fileID: 8739733459593092954, guid: c3ea30be2a86e764eb53b9544007a577, type: 3}
   firingPoint: {fileID: 80049776459674916}
+  initialEnemyHP: 20
   enemyHP: 30
   targetingRange: 2.25
+  initialAttackSpeed: 1
   attackSpeed: 1
+  corpseSprite: {fileID: -9095717837082945937, guid: 47fca73bb61728d42905f926ca245f04, type: 3}
 --- !u!114 &1406823868070441088
 MonoBehaviour:
   m_ObjectHideFlags: 0

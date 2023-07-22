@@ -9,6 +9,7 @@ TagManager:
   - Hero
   - Enemy
   - EnemyProjectiles
+  - Corpse
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Projectiles
   - EnemyProjectiles
   - Enemy
-  - 
+  - Corpse
   - 
   - 
   - 
