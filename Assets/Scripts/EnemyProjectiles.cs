@@ -18,7 +18,7 @@ public class EnemyProjectiles : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            target = player.transform;
+            this.target = player.transform;
         }
     }
     private void FixedUpdate()

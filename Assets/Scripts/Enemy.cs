@@ -5,9 +5,10 @@ using UnityEditor;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private LayerMask heroMask;
+    [SerializeField] private LayerMask playerMask;
     [SerializeField] private GameObject projectilesPrefab;
     [SerializeField] private Transform firingPoint;
+    [SerializeField] private int enemyHP = 20;
 
     [SerializeField] private float targetingRange = 3f;
     [SerializeField] private float attackSpeed = 1f;
@@ -54,7 +55,7 @@ public class Enemy : MonoBehaviour
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, playerMask);
         if (hits.Length > 0)
         {
             target = hits[0].transform;
