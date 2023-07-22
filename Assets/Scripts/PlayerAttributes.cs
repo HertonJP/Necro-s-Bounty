@@ -5,11 +5,18 @@ using UnityEditor;
 
 public class PlayerAttributes : MonoBehaviour
 {
-    [SerializeField] public float moveSpeed = 5f;
-    [SerializeField] public int damage = 10;
+    [SerializeField] public int playerHP = 100;
     [SerializeField] private float auraRange = 2f;
 
 
+    public void TakeDamage(int damage)
+    {
+        playerHP -= damage;
+        if (playerHP <= 0 )
+        {       
+            Destroy(gameObject);
+        }
+    }
 
 
 

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 80049776459674916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FiringPoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: -4802450122993231147}
   - component: {fileID: 1406823868070441088}
   - component: {fileID: 2575530151465257039}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Paladin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,11 +155,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
-  projectilesPrefab: {fileID: 0}
+    m_Bits: 128
+  projectilesPrefab: {fileID: 8739733459593092954, guid: c3ea30be2a86e764eb53b9544007a577, type: 3}
   firingPoint: {fileID: 80049776459674916}
-  enemyHP: 20
-  targetingRange: 3
+  enemyHP: 30
+  targetingRange: 2.25
   attackSpeed: 1
 --- !u!114 &1406823868070441088
 MonoBehaviour:
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416d3c559480db14297402ed58fab228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
   rb: {fileID: 6696597340483005148}
 --- !u!61 &2575530151465257039
 BoxCollider2D:

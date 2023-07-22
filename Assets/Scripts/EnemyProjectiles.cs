@@ -6,35 +6,32 @@ public class EnemyProjectiles : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
 
-    private Transform target;
-
+    private Vector2 initialDirection; // Store the initial direction towards the player
     [SerializeField] private float projectilesSpeed = 5f;
     [SerializeField] private int projectilesDamage = 1;
 
-    
-    
-    public void SetTarget(Transform target)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            this.target = player.transform;
-        }
-    }
     private void FixedUpdate()
     {
-        if (!target)
-        {
-            return;
-        }
-        Vector2 direction = (target.position - transform.position).normalized;
-
-        rb.velocity = direction * projectilesSpeed;
+        // Move the projectile in the initial direction without any further changes
+        rb.velocity = initialDirection * projectilesSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    public void SetInitialDirection(Vector2 direction)
     {
-       // other.gameObject.GetComponent<enemyHealth>().TakeDamage(projectilesDamage);
+        // Set the initial direction towards the player when the projectile is instantiated
+        initialDirection = direction.normalized;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collision is with the player
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // If it's the player, apply damage
+            collision.gameObject.GetComponent<PlayerAttributes>().TakeDamage(projectilesDamage);
+        }
+
+        // Destroy the projectile regardless of the collision
         Destroy(gameObject);
     }
 }

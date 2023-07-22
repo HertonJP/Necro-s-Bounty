@@ -6,12 +6,16 @@ using UnityEngine.Events;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private GameObject paladinProjectiles;
+    [SerializeField] private GameObject priestProjectiles;
 
     [SerializeField] private int baseEnemies = 3;
     [SerializeField] private float enemiesPerSecond = 1f;
     [SerializeField] private float timeBetweenWaves = 10f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private int wavesUntilStatIncrease = 5;
+    public int wavesCompleted = 0;
 
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
@@ -63,6 +67,18 @@ public class Spawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
+        if (wavesCompleted >= wavesUntilStatIncrease)
+        {
+            for (int i = 0; i < enemyPrefabs.Length; i++)
+            {
+                Enemy enemyPrefabScript = enemyPrefabs[i].GetComponent<Enemy>();
+                enemyPrefabScript.enemyHP += 10;
+                enemyPrefabScript.attackSpeed += 0.5f;
+            }
+
+            // Reset the wave counter
+            wavesCompleted = 0;
+        }
         StartCoroutine(StartWave());
     }
 

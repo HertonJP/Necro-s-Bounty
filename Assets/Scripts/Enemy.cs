@@ -8,15 +8,23 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private GameObject projectilesPrefab;
     [SerializeField] private Transform firingPoint;
-    [SerializeField] private int enemyHP = 20;
+    [SerializeField] public int initialEnemyHP = 20;
+    public int enemyHP;
+    private bool isDestroyed = false;
 
     [SerializeField] private float targetingRange = 3f;
-    [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] public float initialAttackSpeed = 1f;
+    public float attackSpeed;
 
     private Transform target;
     private float timeUntilFire;
 
-
+    private void Start()
+    {
+        enemyHP = initialEnemyHP;
+        attackSpeed = initialAttackSpeed;
+      
+    }
     private void Update()
     {
         if (target == null)
@@ -43,9 +51,13 @@ public class Enemy : MonoBehaviour
     private void Attack()
     {
         GameObject projectilesObj = Instantiate(projectilesPrefab, firingPoint.position, Quaternion.identity);
+
+        // Calculate the direction towards the player
+        Vector2 directionToPlayer = target.transform.position - firingPoint.position;
+
+        // Set the target and initial direction for the EnemyProjectiles
         EnemyProjectiles projectilesScript = projectilesObj.GetComponent<EnemyProjectiles>();
-        projectilesScript.SetTarget(target);
-        Debug.Log("Attack");
+        projectilesScript.SetInitialDirection(directionToPlayer);
     }
 
     private bool inRange()
@@ -61,7 +73,17 @@ public class Enemy : MonoBehaviour
             target = hits[0].transform;
         }
     }
-
+    
+    public void TakeDamage(int damage)
+    {
+        enemyHP -= damage;
+        if (enemyHP <= 0 && !isDestroyed)
+        {
+            Spawner.onEnemyDestroy.Invoke();
+            isDestroyed = true;
+            Destroy(gameObject);
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
