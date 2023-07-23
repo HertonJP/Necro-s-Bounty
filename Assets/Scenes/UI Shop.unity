@@ -1912,8 +1912,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1884002622}
         m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
-        m_MethodName: BackButton
-        m_Mode: 5
+        m_MethodName: ResumeGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2885,7 +2885,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 209051233
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.5926572, g: 0.14827341, b: 0.6415094, a: 1}
@@ -2926,9 +2926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7377663302108084bbd1f5f45ff04638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 162160166}
-  bulletPrefab: {fileID: 8842439605741352794, guid: 985bc95241e455e49b74f364b3389f7d, type: 3}
-  bulletForce: 20
 --- !u!1 &908170681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5341,6 +5338,7 @@ MonoBehaviour:
   sceneName: Menu
   pauseMenu: {fileID: 1807830703}
   isPaused: 0
+  shopPanel: {fileID: 594568431}
 --- !u!4 &1884002623
 Transform:
   m_ObjectHideFlags: 0
