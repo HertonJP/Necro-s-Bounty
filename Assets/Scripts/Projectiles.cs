@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Projectiles : MonoBehaviour
 {
+    [SerializeField] public int projectilesDamage = 5;
+    public string enemyTag = "Enemy";
 
-    public string playerTag = "Player";
-
-
-   private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-         
-        if (!collision.gameObject.CompareTag(playerTag))
+        if (collision.gameObject.CompareTag(enemyTag))
         {
-            Destroy(this.gameObject);
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(projectilesDamage);
+            }
         }
+        Destroy(gameObject);
     }
 }
-

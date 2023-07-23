@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class PlayerAttributes : MonoBehaviour
 {
-    [SerializeField] public float moveSpeed = 5f;
-    [SerializeField] public int damage = 10;
-    [SerializeField] private float auraRange = 2f;
+    [SerializeField] public int playerHP = 100;
+    [SerializeField] public float auraRange = 2f;
 
+    private const string CorpseTag = "Corpse";
 
-
-
-
+    public void TakeDamage(int damage)
+    {
+        playerHP -= damage;
+        if (playerHP <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, auraRange);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, auraRange);
     }
 }

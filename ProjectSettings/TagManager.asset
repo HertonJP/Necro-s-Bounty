@@ -7,6 +7,9 @@ TagManager:
   - Border
   - Projectiles
   - Hero
+  - Enemy
+  - EnemyProjectiles
+  - Corpse
   layers:
   - Default
   - TransparentFX
@@ -17,11 +20,11 @@ TagManager:
   - Ground
   - Hero
   - Projectiles
-  - 
-  - 
-  - 
-  - 
-  - 
+  - EnemyProjectiles
+  - Enemy
+  - Corpse
+  - Aura
+  - PlayerInvincible
   - 
   - 
   - 
@@ -46,6 +49,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Aura
+    uniqueID: 737234369
     locked: 0
   - name: Enemy
     uniqueID: 1013639485

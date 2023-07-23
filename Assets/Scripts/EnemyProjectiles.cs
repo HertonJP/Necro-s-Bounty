@@ -5,36 +5,30 @@ using UnityEngine;
 public class EnemyProjectiles : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-
-    private Transform target;
-
+    private Vector2 initialDirection;
     [SerializeField] private float projectilesSpeed = 5f;
     [SerializeField] private int projectilesDamage = 1;
 
-    
-    
-    public void SetTarget(Transform target)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            this.target = player.transform;
-        }
-    }
     private void FixedUpdate()
     {
-        if (!target)
-        {
-            return;
-        }
-        Vector2 direction = (target.position - transform.position).normalized;
+        rb.velocity = initialDirection * projectilesSpeed;
+    }
 
-        rb.velocity = direction * projectilesSpeed;
+    public void SetInitialDirection(Vector2 direction)
+    {
+        initialDirection = direction.normalized;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-       // other.gameObject.GetComponent<enemyHealth>().TakeDamage(projectilesDamage);
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            PlayerSkill playerSkill = other.gameObject.GetComponent<PlayerSkill>();
+            if (playerSkill != null && !playerSkill.IsInvincible())
+            {
+                other.gameObject.GetComponent<PlayerAttributes>().TakeDamage(projectilesDamage);
+            }
+            Destroy(gameObject);
+        }
     }
 }
