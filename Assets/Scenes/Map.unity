@@ -1206,8 +1206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 6477872820593909554, guid: 67cdb59e51d04664796c5a0c9ba1e806, type: 3}
   - {fileID: 4835203595371519502, guid: 018413a743bb636469c68269d472b4ef, type: 3}
+  - {fileID: 6477872820593909554, guid: 67cdb59e51d04664796c5a0c9ba1e806, type: 3}
   paladinProjectiles: {fileID: 0}
   priestProjectiles: {fileID: 0}
   baseEnemies: 5
@@ -4511,9 +4511,13 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2103914353}
-    - target: {fileID: 1338004431303927045, guid: fcc294539f529e8428efc0b91a4e1b2c, type: 3}
-      propertyPath: offsetDistance
-      value: 2
+    - target: {fileID: 1338004431303927043, guid: fcc294539f529e8428efc0b91a4e1b2c, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338004431303927044, guid: fcc294539f529e8428efc0b91a4e1b2c, type: 3}
+      propertyPath: playerHP
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1338004431303927047, guid: fcc294539f529e8428efc0b91a4e1b2c, type: 3}
       propertyPath: m_RootOrder

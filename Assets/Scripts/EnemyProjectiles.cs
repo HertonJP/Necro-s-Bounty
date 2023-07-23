@@ -5,33 +5,30 @@ using UnityEngine;
 public class EnemyProjectiles : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-
-    private Vector2 initialDirection; // Store the initial direction towards the player
+    private Vector2 initialDirection;
     [SerializeField] private float projectilesSpeed = 5f;
     [SerializeField] private int projectilesDamage = 1;
 
     private void FixedUpdate()
     {
-        // Move the projectile in the initial direction without any further changes
         rb.velocity = initialDirection * projectilesSpeed;
     }
 
     public void SetInitialDirection(Vector2 direction)
     {
-        // Set the initial direction towards the player when the projectile is instantiated
         initialDirection = direction.normalized;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        // Check if the collision is with the player
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            // If it's the player, apply damage
-            collision.gameObject.GetComponent<PlayerAttributes>().TakeDamage(projectilesDamage);
+            PlayerSkill playerSkill = other.gameObject.GetComponent<PlayerSkill>();
+            if (playerSkill != null && !playerSkill.IsInvincible())
+            {
+                other.gameObject.GetComponent<PlayerAttributes>().TakeDamage(projectilesDamage);
+            }
+            Destroy(gameObject);
         }
-
-        // Destroy the projectile regardless of the collision
-        Destroy(gameObject);
     }
 }

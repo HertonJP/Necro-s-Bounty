@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 1338004431303927050}
   - component: {fileID: 1338004431303927043}
   - component: {fileID: 1338004431303927069}
+  - component: {fileID: 687013408171316230}
   - component: {fileID: 1338004431303927051}
   m_Layer: 7
   m_Name: necro
@@ -399,7 +400,7 @@ MonoBehaviour:
   shootingSpeed: 10
   spreadAngle: 360
   numProjectiles: 16
-  offsetDistance: 1
+  offsetDistance: 2
   playerAttributes: {fileID: 1338004431303927044}
 --- !u!114 &1338004431303927050
 MonoBehaviour:
@@ -461,6 +462,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5640535, y: 5.375798}
   m_EdgeRadius: 0
+--- !u!114 &687013408171316230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338004431303927068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa922a089db4ffe4aad8bf7864310963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1338004431303927051
 Animator:
   serializedVersion: 5
