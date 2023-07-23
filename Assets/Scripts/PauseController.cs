@@ -38,10 +38,24 @@ public class PauseController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            shopPanel.SetActive(!shopPanel.activeSelf);
-            Time.timeScale = 0f;
-            isPaused = true;
-            shopSFX.Play();
+            if (shopPanel.activeSelf)
+            {
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
+            }
+            else
+            {
+                shopPanel.SetActive(!shopPanel.activeSelf);
+                Time.timeScale = shopPanel.activeSelf ? 0f : 1f;
+                isPaused = shopPanel.activeSelf;
+                shopSFX.Play();
+            }
         }
     }
 

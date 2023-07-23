@@ -15,13 +15,21 @@ public class PlayerShooting : MonoBehaviour
     public int numProjectiles = 16;
     public float offsetDistance = 1f;
 
-    [SerializeField] private PlayerAttributes playerAttributes;
+    private AudioSource attackSFX;
+    private PlayerAttributes playerAttributes;
+
+    private void Start()
+    {
+        attackSFX = GetComponent<AudioSource>();
+        playerAttributes = GetComponent<PlayerAttributes>();
+    }
 
     private void Update()
     {
         if (canShootFire1 && Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            attackSFX.Play();
             StartCoroutine(Fire1Cooldown());
         }
 

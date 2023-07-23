@@ -21,9 +21,11 @@ public class Enemy : MonoBehaviour
 
     private Transform target;
     private float timeUntilFire;
+    private AudioSource attackSFX;
 
     private void Start()
     {
+        attackSFX = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         enemyHP = initialEnemyHP;
         attackSpeed = initialAttackSpeed;
@@ -70,6 +72,7 @@ public class Enemy : MonoBehaviour
 
         EnemyProjectiles projectilesScript = projectilesObj.GetComponent<EnemyProjectiles>();
         projectilesScript.SetInitialDirection(directionToPlayer);
+        attackSFX.Play();
     }
 
     private bool inRange()

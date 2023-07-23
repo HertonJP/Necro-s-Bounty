@@ -16,10 +16,6 @@ public class SoundEffects : MonoBehaviour
     {
         gameOverSFX.Play();
     }
-    public void priestAttackSound()
-    {
-        priestAttackSFX.Play();
-    }
     public void priestWalkSound()
     {
         priestWalkSFX.Play();
@@ -29,12 +25,6 @@ public class SoundEffects : MonoBehaviour
     {
         necroAttackSFX.Play();
     }
-
-    public void knightAttackSound()
-    {
-        knightAttackSFX.Play();
-    }
-
     public void knigtWalkSound()
     {
         knightWalkSFX.Play();

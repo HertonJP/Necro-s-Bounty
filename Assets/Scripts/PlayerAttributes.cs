@@ -7,6 +7,8 @@ public class PlayerAttributes : MonoBehaviour
     [SerializeField] public int playerHP = 100;
     [SerializeField] public float auraRange = 2f;
 
+    public GameObject gameOverPanel;
+
     private const string CorpseTag = "Corpse";
 
     public void TakeDamage(int damage)
@@ -14,7 +16,14 @@ public class PlayerAttributes : MonoBehaviour
         playerHP -= damage;
         if (playerHP <= 0)
         {
-            Destroy(gameObject);
+            playerHP = 0; 
+            Time.timeScale = 0f; 
+
+
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.SetActive(true);
+            }
         }
     }
 
