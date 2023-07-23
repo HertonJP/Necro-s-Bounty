@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
@@ -13,13 +14,14 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float enemiesPerSecond = 1f;
     [SerializeField] private float timeBetweenWaves = 10f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
-    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private int wavesUntilStatIncrease = 5;
     public int wavesCompleted = 0;
+    private TextMeshProUGUI waveText;
 
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
-    private int currentWave = 1;
+    public int currentWave = 0;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
@@ -38,6 +40,7 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
+        waveText = GameObject.Find("Current Wave Text").GetComponent<TextMeshProUGUI>();
         StartCoroutine(StartWave());
     }
 
@@ -60,6 +63,7 @@ public class Spawner : MonoBehaviour
         {
             EndWave();
         }
+        waveText.text = "Current Wave: " + currentWave.ToString();
     }
 
     private void EndWave()
@@ -87,9 +91,9 @@ public class Spawner : MonoBehaviour
         int index = Random.Range(0, enemyPrefabs.Length);
         GameObject prefabToSpawn = enemyPrefabs[index];
 
+        Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-
-        Instantiate(prefabToSpawn, spawnPoint.transform.position, Quaternion.identity);
+        Instantiate(prefabToSpawn, randomSpawnPoint.position, Quaternion.identity);
     }
 
 

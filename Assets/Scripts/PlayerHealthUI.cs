@@ -8,7 +8,6 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void Start()
     {
-        // Find the TextMeshProUGUI component by name
         healthText = GameObject.Find("HP Value Text").GetComponent<TextMeshProUGUI>();
 
         if (healthText == null)
