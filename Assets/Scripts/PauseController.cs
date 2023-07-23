@@ -10,12 +10,14 @@ public class PauseController : MonoBehaviour
     public string sceneName;
     public GameObject pauseMenu;
     public bool isPaused;
-    public GameObject shopPanel;
+    public GameObject shopPanel; 
+    public GameObject tutorPanel;
 
     private void Start()
     {
         pauseMenu.SetActive(false);
         shopPanel.SetActive(false);
+        tutorGame();
     }
 
     private void Update()
@@ -40,6 +42,13 @@ public class PauseController : MonoBehaviour
         }
     }
 
+    public void tutorGame()
+    {
+        tutorPanel.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
@@ -58,6 +67,12 @@ public class PauseController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void ClosePanel()
+    {
+        Time.timeScale = 1f;
+        tutorPanel.SetActive(false);
     }
 
     public void RetryButton(string sceneName)
