@@ -5,7 +5,6 @@ using UnityEngine;
 public class Projectiles : MonoBehaviour
 {
     [SerializeField] public int projectilesDamage = 5;
-
     public string enemyTag = "Enemy";
 
     private void OnCollisionEnter2D(Collision2D collision)

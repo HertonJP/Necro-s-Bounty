@@ -246,10 +246,10 @@ MonoBehaviour:
   firingPoint: {fileID: 80049776459674916}
   initialEnemyHP: 20
   enemyHP: 30
-  targetingRange: 2.25
+  targetingRange: 3
   initialAttackSpeed: 1
   attackSpeed: 1
-  corpseSprite: {fileID: -9095717837082945937, guid: 47fca73bb61728d42905f926ca245f04, type: 3}
+  corpseSprite: {fileID: 21300000, guid: c44480a35d6ae0d4f8ec2b7c6e4a2308, type: 3}
 --- !u!114 &1406823868070441088
 MonoBehaviour:
   m_ObjectHideFlags: 0

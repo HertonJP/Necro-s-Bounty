@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public int enemyHP;
     private bool isDestroyed = false;
     private bool isDead = false;
+    private Animator animator;
 
     [SerializeField] private float targetingRange = 3f;
     [SerializeField] public float initialAttackSpeed = 1f;
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         enemyHP = initialEnemyHP;
         attackSpeed = initialAttackSpeed;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -38,6 +40,8 @@ public class Enemy : MonoBehaviour
             FindTarget();
             return;
         }
+        float distanceToTarget = Vector2.Distance(target.position, transform.position);
+        animator.SetBool("inRange", distanceToTarget <= targetingRange);
 
         if (!inRange())
         {
@@ -49,13 +53,17 @@ public class Enemy : MonoBehaviour
         }
         if (timeUntilFire >= 1f / attackSpeed)
         {
-            Attack();
+            animator.SetTrigger("isAttack");
             timeUntilFire = 0f;
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
+        if (target == null)
+        {
+            return;
+        }
         GameObject projectilesObj = Instantiate(projectilesPrefab, firingPoint.position, Quaternion.identity);
 
         Vector2 directionToPlayer = target.transform.position - firingPoint.position;
@@ -86,6 +94,7 @@ public class Enemy : MonoBehaviour
         enemyHP -= damage;
         if (enemyHP <= 0 && !isDestroyed)
         {
+            animator.enabled = false;
             isDestroyed = true;
             StopAttackingAndFollowing();
             StartCoroutine(DestroyAfterDelay());
