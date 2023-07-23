@@ -8,6 +8,8 @@ public class PlayerShooting : MonoBehaviour
     public Transform firingPoint;
 
     public float shootingSpeed = 10f;
+    public float fire1Cooldown = 0.5f;
+    private bool canShootFire1 = true;
 
     public float spreadAngle = 360f;
     public int numProjectiles = 16;
@@ -17,9 +19,10 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (canShootFire1 && Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            StartCoroutine(Fire1Cooldown());
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && playerAttributes.playerHP >= 50)
@@ -71,5 +74,12 @@ public class PlayerShooting : MonoBehaviour
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             rb.velocity = direction * shootingSpeed;
         }
+    }
+
+    private IEnumerator Fire1Cooldown()
+    {
+        canShootFire1 = false;
+        yield return new WaitForSeconds(fire1Cooldown);
+        canShootFire1 = true;
     }
 }

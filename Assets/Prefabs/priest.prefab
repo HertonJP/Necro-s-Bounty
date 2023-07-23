@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: -2054517521461744120}
   - component: {fileID: 1926690783434133438}
   - component: {fileID: 1661269744513568015}
+  - component: {fileID: 4924137573782170430}
   m_Layer: 10
   m_Name: priest
   m_TagString: Enemy
@@ -239,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416d3c559480db14297402ed58fab228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   rb: {fileID: -1557321690385978309}
 --- !u!61 &-2054517521461744120
 BoxCollider2D:
@@ -311,3 +312,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4924137573782170430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4835203595371519502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e192bf47741e714e89e1eda77f75073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverSFX: {fileID: 0}
+  priestAttackSFX: {fileID: 0}
+  priestWalkSFX: {fileID: 0}
+  necroAttackSFX: {fileID: 0}
+  knightAttackSFX: {fileID: 0}
+  knightWalkSFX: {fileID: 0}
