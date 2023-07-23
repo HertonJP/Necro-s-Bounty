@@ -29,7 +29,7 @@ public class AuraRangeIndicator : MonoBehaviour
             Collider2D collider = results[i];
             if (collider.CompareTag("Corpse"))
             {
-                playerAttributes.playerHP += 5;
+                playerAttributes.playerHP += 10;
                 Destroy(collider.gameObject);
             }
         }

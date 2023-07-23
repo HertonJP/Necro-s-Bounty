@@ -5732,10 +5732,10 @@ MonoBehaviour:
   - {fileID: 4835203595371519502, guid: 018413a743bb636469c68269d472b4ef, type: 3}
   paladinProjectiles: {fileID: 0}
   priestProjectiles: {fileID: 0}
-  baseEnemies: 5
+  baseEnemies: 4
   enemiesPerSecond: 1
-  timeBetweenWaves: 5
-  difficultyScalingFactor: 0.75
+  timeBetweenWaves: 10
+  difficultyScalingFactor: 0.65
   spawnPoints:
   - {fileID: 637397658}
   - {fileID: 37179266}

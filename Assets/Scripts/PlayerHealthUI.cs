@@ -23,6 +23,6 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void Update()
     {
-        healthText.text = "Blood: " + playerAttributes.playerHP.ToString();
+        healthText.text = "" + playerAttributes.playerHP.ToString();
     }
 }
