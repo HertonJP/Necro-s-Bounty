@@ -12,6 +12,8 @@ public class PauseController : MonoBehaviour
     public bool isPaused;
     public GameObject shopPanel; 
     public GameObject tutorPanel;
+    public GameObject gameOverPanel;
+    public AudioSource shopSFX;
 
     private void Start()
     {
@@ -39,6 +41,7 @@ public class PauseController : MonoBehaviour
             shopPanel.SetActive(!shopPanel.activeSelf);
             Time.timeScale = 0f;
             isPaused = true;
+            shopSFX.Play();
         }
     }
 
@@ -79,5 +82,12 @@ public class PauseController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void gameOver()
+    {
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
     }
 }

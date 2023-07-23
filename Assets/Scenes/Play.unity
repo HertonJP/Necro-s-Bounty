@@ -863,7 +863,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1565331481
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -961,7 +961,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51416ace47f21d847bf3cee00e911113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
+  projectilesDamage: 5
+  enemyTag: Enemy
 --- !u!212 &1094896331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1001,7 +1002,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 209051233
-  m_SortingLayer: -1
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: ee79a5432c526594bab58a9f6ced461e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1011,7 +1012,7 @@ SpriteRenderer:
   m_Size: {x: 6.33, y: 6.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1094896332
@@ -1068,9 +1069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7377663302108084bbd1f5f45ff04638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 162160166}
-  bulletPrefab: {fileID: 8842439605741352794, guid: 985bc95241e455e49b74f364b3389f7d, type: 3}
-  bulletForce: 20
 --- !u!1 &1354501391
 GameObject:
   m_ObjectHideFlags: 0
