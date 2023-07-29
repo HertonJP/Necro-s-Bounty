@@ -20,10 +20,14 @@ public class PlayerSkill : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !isInvincible && playerAttributes.playerHP >= 30)
+        if (!Time.timeScale.Equals(0f))
         {
-            StartCoroutine(ActivateSkill());
+            if (Input.GetMouseButtonDown(1) && !isInvincible && playerAttributes.playerHP >= 30)
+            {
+                StartCoroutine(ActivateSkill());
+            }
         }
+            
     }
 
     private IEnumerator ActivateSkill()

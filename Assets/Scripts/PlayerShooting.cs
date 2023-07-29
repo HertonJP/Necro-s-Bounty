@@ -26,18 +26,25 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (canShootFire1 && Input.GetButtonDown("Fire1"))
+        if (!Time.timeScale.Equals(0f))
         {
-            Shoot();
-            attackSFX.Play();
-            StartCoroutine(Fire1Cooldown());
-        }
+            if (canShootFire1 && Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+                attackSFX.Play();
+                StartCoroutine(Fire1Cooldown());
 
-        if (Input.GetKeyDown(KeyCode.Space) && playerAttributes.playerHP >= 50)
-        {
-            TriggerSkillMultiple(3, 0.5f);
-            playerAttributes.playerHP -= 50;
+                if (Input.GetKeyDown(KeyCode.Space) && playerAttributes.playerHP >= 50)
+                {
+                    TriggerSkillMultiple(3, 0.5f);
+                    playerAttributes.playerHP -= 50;
+                }
+            }
+
         }
+            
+
+        
     }
 
     private void Shoot()

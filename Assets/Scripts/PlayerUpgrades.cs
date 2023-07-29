@@ -13,15 +13,21 @@ public class PlayerUpgrades : MonoBehaviour
 
     public TextMeshProUGUI attackUpgradeText;
     public TextMeshProUGUI movementSpeedUpgradeText;
+    public TextMeshProUGUI projectilesUpgradeText;
     public TextMeshProUGUI attackUpgradeCostText;
     public TextMeshProUGUI movementSpeedUpgradeCostText;
+    public TextMeshProUGUI projectilesUpgradeCostText;
+
 
 
     private int attackUpgradeLevel = 0;
     private int movementSpeedUpgradeLevel = 0;
+    private int projectilesUpgradeLevel = 0;
 
-    private int attackUpgradeCost = 150;
-    private int movementSpeedUpgradeCost = 150;
+    private int attackUpgradeCost = 100;
+    private int movementSpeedUpgradeCost = 100;
+    private int projectilesUpgradeCost = 200;
+    
 
     private void Start()
     {
@@ -32,7 +38,7 @@ public class PlayerUpgrades : MonoBehaviour
     {
         if (CanAffordUpgrade(attackUpgradeCost))
         {
-            projectiles.projectilesDamage++;
+            projectiles.projectilesDamage += 2;
             playerAttributes.playerHP -= attackUpgradeCost;
             attackUpgradeLevel++;
             attackUpgradeCost += 50;
@@ -52,6 +58,23 @@ public class PlayerUpgrades : MonoBehaviour
         }
     }
 
+    public void UpgradeProjectiles()
+    {
+        if(projectilesUpgradeLevel <= 4)
+        {
+            playerShooting.fire1Cooldown -= 0.1f;
+            playerAttributes.playerHP -= projectilesUpgradeCost;
+            projectilesUpgradeLevel++;
+            projectilesUpgradeCost += 100;
+            UpdateUpgradeTexts();
+        }
+        else
+        {
+            projectilesUpgradeText.text = "MAX";
+            projectilesUpgradeCostText.text = "0";
+            UpdateUpgradeTexts();
+        }
+    }
     
 
     private bool CanAffordUpgrade(int upgradeCost)
@@ -65,5 +88,7 @@ public class PlayerUpgrades : MonoBehaviour
         attackUpgradeCostText.text = " " + attackUpgradeCost;
         movementSpeedUpgradeText.text = "Level " + movementSpeedUpgradeLevel;
         movementSpeedUpgradeCostText.text = " " + movementSpeedUpgradeCost;
+        projectilesUpgradeText.text = "Level " + projectilesUpgradeLevel;
+        projectilesUpgradeCostText.text = " " + projectilesUpgradeCost;
     }
 }
