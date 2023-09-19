@@ -41,7 +41,7 @@
 You can rate and comment about the game in the game page. Any feedback is really appreciated.
 - https://jagoann3on.itch.io/lung-defender-the-cell-strikes-back
 
-## Credits
+## Contributions
 - Game Programmer: Herton Julius Pratama
 - Game Designer: Jeffer Devaga
 - Game Artist: Steven Jaya
