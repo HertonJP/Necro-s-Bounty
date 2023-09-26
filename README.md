@@ -39,7 +39,7 @@
 
 ## Feedback and Bug Reports
 You can rate and comment about the game in the game page. Any feedback is really appreciated.
-- [[https://jagoann3on.itch.io/lung-defender-the-cell-strikes-back](https://jagoann3on.itch.io/necrosbounty)](https://jagoann3on.itch.io/necrosbounty)
+- https://jagoann3on.itch.io/necrosbounty
 
 ## Contributions
 - Game Programmer: Herton Julius Pratama
