@@ -68,3 +68,6 @@ TagManager:
   - name: Gravestone
     uniqueID: 796607847
     locked: 0
+  - name: Foreground
+    uniqueID: 4166103689
+    locked: 0
