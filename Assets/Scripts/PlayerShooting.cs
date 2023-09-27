@@ -26,7 +26,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (!Time.timeScale.Equals(0f))
+        if (Time.timeScale != 0)
         {
             if (canShootFire1 && Input.GetButtonDown("Fire1"))
             {
@@ -34,11 +34,12 @@ public class PlayerShooting : MonoBehaviour
                 attackSFX.Play();
                 StartCoroutine(Fire1Cooldown());
 
-                if (Input.GetKeyDown(KeyCode.Space) && playerAttributes.playerHP >= 50)
-                {
-                    TriggerSkillMultiple(3, 0.5f);
-                    playerAttributes.playerHP -= 50;
-                }
+                
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && playerAttributes.playerHP >= 50)
+            {
+                TriggerSkillMultiple(3, 0.5f);
+                playerAttributes.playerHP -= 50;
             }
 
         }

@@ -20,7 +20,7 @@ public class PlayerSkill : MonoBehaviour
 
     private void Update()
     {
-        if (!Time.timeScale.Equals(0f))
+        if (Time.timeScale != 0)
         {
             if (Input.GetMouseButtonDown(1) && !isInvincible && playerAttributes.playerHP >= 30)
             {
