@@ -14395,7 +14395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1338004431303927044, guid: fcc294539f529e8428efc0b91a4e1b2c, type: 3}
       propertyPath: playerHP
-      value: 5000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1338004431303927044, guid: fcc294539f529e8428efc0b91a4e1b2c, type: 3}
       propertyPath: gameOverPanel
