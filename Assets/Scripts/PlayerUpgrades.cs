@@ -60,7 +60,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void UpgradeProjectiles()
     {
-        if(projectilesUpgradeLevel <= 4)
+        if(projectilesUpgradeLevel <= 4 && CanAffordUpgrade(projectilesUpgradeCost))
         {
             playerShooting.fire1Cooldown -= 0.1f;
             playerAttributes.playerHP -= projectilesUpgradeCost;
